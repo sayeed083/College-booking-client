@@ -5,17 +5,23 @@ import { AuthContext } from "../../../Providers/AuthProvider";
 
 const Navbar = () => {
 
-    const {user, logOut} = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext)
+
 
 
 
     const navigations = <>
-    <li><Link to="/">Home</Link></li>
-    <li><Link to="/">Colleges</Link></li>
-    <li><Link to="/">Admission</Link></li>
-    <li><Link to="/">My College</Link></li>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/">Colleges</Link></li>
+        <li><Link to="/">Admission</Link></li>
+        <li><Link to="/">My College</Link></li>
     </>
 
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.log(error));
+    }
 
 
 
@@ -43,17 +49,17 @@ const Navbar = () => {
 
                     {/* For User Photo And on Hover The Name */}
                     {user &&
-                        <div className="tooltip " data-tip={user.displayName}>
-                            <button className="btn btn-outline btn-success">{user.displayName}</button>
+                        <div className="flex items-center justify-center gap-5">
+                            <button className="btn-ghost">{user.displayName}</button>
                             <img className="w-20 rounded-full mr-6" src={user.photoURL} alt="" />
                         </div>
 
                     }
 
-                    {/* Toggle Login LogOut */}
+                   
                     {
                         user ? <>
-                            <button onClick={handleLogOut} className="btn btn-ghost">LogOut</button>
+                            <button onClick={handleLogOut} className="btn btn-outline btn-info">LogOut</button>
                         </> : <>
                             <Link to="/login">
                                 <button className="btn glass">Log In</button>
