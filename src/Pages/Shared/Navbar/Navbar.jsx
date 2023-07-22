@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { useEffect } from "react";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider";
@@ -7,6 +9,25 @@ const Navbar = () => {
 
     const { user, logOut } = useContext(AuthContext)
 
+    const [getEmail, setGetEmail] = useState([])
+    const [getId, setGetId] = useState([])
+
+
+    useEffect(() => {
+
+        fetch("http://localhost:5000/users")
+            .then(res => res.json())
+            .then(data => {
+                console.log({ data });
+                const typeUser = user?.email
+                const normalUser = data?.filter(item => item.email === typeUser)
+                setGetEmail(normalUser[0]?.email)
+                setGetId(normalUser[0]?._id)
+            })
+
+    }, [user])
+
+    console.log({ getEmail });
 
 
 
@@ -47,16 +68,15 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end">
 
-                    {/* For User Photo And on Hover The Name */}
                     {user &&
                         <div className="flex items-center justify-center gap-5">
-                            <button className="btn-ghost">{user.displayName}</button>
+                            <button className="btn-ghost font-serif text-white"><Link state={{getEmail}} to={`userInfo/${getId}`}>{user?.displayName}</Link></button>
                             <img className="w-20 rounded-full mr-6" src={user.photoURL} alt="" />
                         </div>
 
                     }
 
-                   
+
                     {
                         user ? <>
                             <button onClick={handleLogOut} className="btn btn-outline btn-info">LogOut</button>
@@ -66,9 +86,6 @@ const Navbar = () => {
                             </Link>
                         </>
                     }
-
-
-
 
                 </div>
             </div>

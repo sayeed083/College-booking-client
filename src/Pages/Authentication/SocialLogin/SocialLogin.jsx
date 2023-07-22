@@ -18,7 +18,7 @@ const SocialLogin = () => {
         googleSignIn()
             .then(result => {
                 const loggedInUser = result.user;
-                console.log(loggedInUser);
+                // console.log(loggedInUser);
 
                 const saveTheUser = { name: loggedInUser.displayName, email: loggedInUser.email, userImage: loggedInUser.photoURL, }
                 fetch('http://localhost:5000/users', {
@@ -47,7 +47,7 @@ const SocialLogin = () => {
         gitHubSignIn()
             .then(result => {
                 const loggedInUser = result.user;
-                console.log(loggedInUser);
+                // console.log(loggedInUser);
 
                 const saveTheUser = { name: loggedInUser.displayName, email: loggedInUser.email, userImage: loggedInUser.photoURL, }
                 fetch('http://localhost:5000/users', {
