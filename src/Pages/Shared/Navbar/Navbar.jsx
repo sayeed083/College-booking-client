@@ -21,7 +21,7 @@ const Navbar = () => {
 
     return (
         <div>
-            <div className="navbar bg-opacity-50 bg-sky-600 ">
+            <div className="navbar bg-opacity-50 bg-sky-400 ">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -31,7 +31,7 @@ const Navbar = () => {
                             {navigations}
                         </ul>
                     </div>
-                    <img className="w-[65px]" src="https://i.postimg.cc/tJPnZq47/spanish-guitar.png" alt="" />
+                    <img className="w-[80px]" src="https://i.postimg.cc/PxqY8mxn/Elite-Admit-Hub.png" alt="" />
                     <Link to="/" className="btn btn-ghost uppercase text-xl">Elite Admit Hub</Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
