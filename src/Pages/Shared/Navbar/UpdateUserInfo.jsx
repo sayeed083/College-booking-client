@@ -79,7 +79,7 @@ const UpdateUserInfo = () => {
 
                             </div>
                             <div className="form-control mt-6">
-                                <input className="btn btn-info" type="submit" value="Up--Date" />
+                                <input className="btn btn-info" type="submit" value="Save" />
                             </div>
                         </div>
                     </form>
