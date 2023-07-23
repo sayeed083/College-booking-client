@@ -1,5 +1,6 @@
 import CollegeCards from "../CollegeCards/CollegeCards";
 import CollegeGalary from "../CollegeGalary/CollegeGalary";
+import ResearchedPapers from "../ResearchedPapers/ResearchedPapers";
 
 
 const Home = () => {
@@ -7,6 +8,7 @@ const Home = () => {
         <div>
             <CollegeCards></CollegeCards>
             <CollegeGalary></CollegeGalary>
+            <ResearchedPapers/>
         </div>
     );
 };
