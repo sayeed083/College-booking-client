@@ -1,42 +1,70 @@
+import { useContext } from "react";
+import { useLoaderData, useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
+import useAllUser from "../../../hooks/useAllUser";
+import { AuthContext } from "../../../Providers/AuthProvider";
 
 const AdmissionPerCollege = () => {
 
+    const colleges = useLoaderData();
+    console.log({ colleges });
+    const location = useLocation();
+    console.log({ location });
+
+    const [users] = useAllUser();
+
+    const {user} = useContext(AuthContext)
+
+    const filteredUser = users.filter(item => item.email === location.state.getEmail)
+    console.log({ filteredUser });
+
+    const {  userImage } = filteredUser[0] || [];
+   
+    // console.log({ currentUser });
 
 
-    const handleUpdate = event => {
+    const { name, _id } = colleges || {}
+
+    const handleApply = event => {
         event.preventDefault();
+        
         const form = event.target;
         const name = form.name.value;
         const email = form.email.value;
-        const updatedClass = {
-            name: name,
-            email: email
-        }
-        fetch(`http://localhost:5000/user/updateUserInfo/`, {
-            method: 'PATCH',
+        const subject = form.subject.value;
+        const phoneNumber = form.phoneNumber.value;
+        const address = form.address.value;
+        const dateOfBirth = form.dateOfBirth.value;
+        const image = form.image.value;
+        const collegeName = form.collegeName.value;
+        const fullClass = { name: name, email: email, subject, collegeID: _id, phoneNumber, address, dateOfBirth, image, collegeName }
+        const currentUser = { email, userImage, name, userId:location.state.getId, address, collegeName }
+        console.log({ fullClass, currentUser });
+
+
+        fetch(`http://localhost:5000/allAdmissions`, {
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(updatedClass),
+            body: JSON.stringify({fullClass, currentUser}),
         })
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                if (data.modifiedCount) {
+                if (data.result && data.updateUserData
+                    ) {
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
-                        title: `The  is Updated.`,
+                        title: "Applied Successfully",
                         showConfirmButton: false,
                         timer: 1500
-                    })
+                    });
+                    form.reset();
                 }
             })
-
     }
-
-
 
 
     return (
@@ -47,7 +75,7 @@ const AdmissionPerCollege = () => {
                         <h1 className="text-5xl font-bold mb-16 text-green-500">Admission Panel</h1>
                         <h1 className="text-2xl text-center my-5 text-blue-500"></h1>
                     </div>
-                    <form onSubmit={handleUpdate}>
+                    <form onSubmit={handleApply}>
                         <div className="card w-full  shadow-2xl bg-base-100">
                             <div className="grid grid-cols-2 gap-5 p-10">
 
@@ -57,8 +85,8 @@ const AdmissionPerCollege = () => {
                                     <label className="label">
                                         <span className="label-text">Candidate Name</span>
                                     </label>
-                                    <input defaultValue="" type="text" name="name"
-                                        placeholder="Write your name" className="input input-bordered" />
+                                    <input defaultValue={user?.displayName} type="text" name="name"
+                                        placeholder="Write your name" readOnly className="input input-bordered" />
                                 </div>
                                 {/* ------------------------Level-1-Ends------------------------------------- */}
 
@@ -80,8 +108,8 @@ const AdmissionPerCollege = () => {
                                     <label className="label">
                                         <span className="label-text">Candidate Email</span>
                                     </label>
-                                    <input defaultValue="" type="email" name="email"
-                                        placeholder="Write your email" className="input input-bordered" />
+                                    <input defaultValue={user?.email} type="email" name="email"
+                                        placeholder="Write your email" readOnly className="input input-bordered" />
                                 </div>
                                 {/* ------------------------Level-3-Ends------------------------------------- */}
 
@@ -92,7 +120,7 @@ const AdmissionPerCollege = () => {
                                         <span className="label-text">Candidate Phone number</span>
                                     </label>
                                     <input defaultValue="" type="number" name="phoneNumber"
-                                        placeholder="Write your email" className="input input-bordered" />
+                                        placeholder="Enter Phone Number" className="input input-bordered" />
 
                                 </div>
 
@@ -131,11 +159,22 @@ const AdmissionPerCollege = () => {
                                 </div>
 
                                 {/* ------------------------Level-7-Ends------------------------------------- */}
+                                {/* ------------------------Level-7-Starts----------------------------------- */}
+                                <div className="form-control">
+                                    <label className="label">
+                                        <span className="label-text">College Name</span>
+                                    </label>
+                                    <input defaultValue={name} type="text" name="collegeName"
+                                        placeholder="Enter College name" readOnly className="input input-bordered" />
+
+                                </div>
+
+                                {/* ------------------------Level-7-Ends------------------------------------- */}
 
 
                             </div>
                             <div className="form-control mt-6">
-                                <input className="btn btn-info" type="submit" value="Save" />
+                                <input className="btn btn-info" type="submit" value="Apply" />
                             </div>
                         </div>
                     </form>

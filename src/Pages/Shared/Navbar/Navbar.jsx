@@ -18,7 +18,7 @@ const Navbar = () => {
         fetch("http://localhost:5000/users")
             .then(res => res.json())
             .then(data => {
-                console.log({ data });
+                // console.log({ data });
                 const typeUser = user?.email
                 const normalUser = data?.filter(item => item.email === typeUser)
                 setGetEmail(normalUser[0]?.email)
@@ -27,15 +27,15 @@ const Navbar = () => {
 
     }, [user])
 
-    console.log({ getEmail });
+    // console.log({ getEmail });
 
 
 
     const navigations = <>
         <li><Link to="/">Home</Link></li>
         <li><Link to="colleges">Colleges</Link></li>
-        <li><Link to="admissionPortal">Admission</Link></li>
-        <li><Link to="/">My College</Link></li>
+        <li><Link  to="admissionColleges">Admission</Link></li>
+        <li><Link state={{getEmail}} to="myCollege">My College</Link></li>
     </>
 
     const handleLogOut = () => {

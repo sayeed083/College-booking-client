@@ -7,7 +7,6 @@ const Colleges = () => {
 
     const [collegeCards] = useCollegeCards();
 
-    // college image, college name, college rating, admission date, number of the research of that college,
     return (
         <div>
             <h2 className="text-center text-6xl my-16 font-serif">Colleges</h2>

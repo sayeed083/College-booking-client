@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
+import AdmissionForCollege from "../Pages/Admission/AdmissionForCollege/AdmissionForCollege";
 import AdmissionPerCollege from "../Pages/Admission/AdmissionPerCollege/AdmissionPerCollege";
 import Login from "../Pages/Authentication/Login/Login";
 import Register from "../Pages/Authentication/Register/Register";
@@ -7,6 +8,8 @@ import Colleges from "../Pages/Colleges/Colleges";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import CollegeCardsDetails from "../Pages/Home/CollegeCards/CollegeCardsDetails";
 import Home from "../Pages/Home/Home/Home";
+import MyCollege from "../Pages/MyCollege/MyCollege";
+import ReviewandRatings from "../Pages/MyCollege/ReviewandRatings";
 import UpdateUserInfo from "../Pages/Shared/Navbar/UpdateUserInfo";
 import UserInfo from "../Pages/Shared/Navbar/UserInfo";
 import PrivateRoute from "./PrivateRoute";
@@ -48,8 +51,22 @@ export const router = createBrowserRouter([
                 element: <Colleges></Colleges>
             },
             {
-                path: "admissionPortal",
-                element: <AdmissionPerCollege></AdmissionPerCollege>
+                path: "myCollege",
+                element: <MyCollege></MyCollege>
+            },
+            {
+                path: "admissionColleges",
+                element: <AdmissionForCollege></AdmissionForCollege>
+            },
+            {
+                path: "admissionPortal/:id",
+                element: <AdmissionPerCollege></AdmissionPerCollege>,
+                loader: ({params}) => fetch(`http://localhost:5000/allCollege/${params.id}`)
+            },
+            {
+                path: "reviewAndRatings/:id",
+                element: <ReviewandRatings></ReviewandRatings>,
+                loader: ({params}) => fetch(`http://localhost:5000/allCollege/${params.id}`)
             }
         ]
         

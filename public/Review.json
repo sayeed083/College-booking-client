@@ -1,0 +1,22 @@
+[
+    {
+        "_id":1,
+        "name": "Dhaka University College",
+        "review": "Dhaka University College is renowned for its rich legacy in research and offers a diverse range of events, making campus life vibrant and exciting. The top-notch sports facilities further enhance the overall student experience.",
+        "rating": 4.5
+      },
+      {
+        "_id":2,
+        "name": "Sunshine College",
+        "review": "Sunshine College stands out for its significant contributions to research in environmental studies and psychology. The college's emphasis on sports and recreational activities fosters a well-rounded educational journey for students.",
+        "rating": 4.0
+      },
+      {
+        "_id":3,
+        "name": "Pinnacle Institute of Technology",
+        "review": "Pinnacle Institute of Technology has a remarkable history of pioneering research in computer science and robotics. The institute's tech-centric events and sports carnival offer students a platform to showcase their skills.",
+        "rating": 4.8
+      }
+      
+      
+]
