@@ -34,7 +34,7 @@ const Navbar = () => {
     const navigations = <>
         <li><Link to="/">Home</Link></li>
         <li><Link to="colleges">Colleges</Link></li>
-        <li><Link to="/">Admission</Link></li>
+        <li><Link to="admissionPortal">Admission</Link></li>
         <li><Link to="/">My College</Link></li>
     </>
 

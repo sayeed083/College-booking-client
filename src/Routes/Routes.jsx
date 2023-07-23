@@ -1,8 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
+import AdmissionPerCollege from "../Pages/Admission/AdmissionPerCollege/AdmissionPerCollege";
 import Login from "../Pages/Authentication/Login/Login";
 import Register from "../Pages/Authentication/Register/Register";
 import Colleges from "../Pages/Colleges/Colleges";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import CollegeCardsDetails from "../Pages/Home/CollegeCards/CollegeCardsDetails";
 import Home from "../Pages/Home/Home/Home";
 import UpdateUserInfo from "../Pages/Shared/Navbar/UpdateUserInfo";
@@ -12,6 +14,7 @@ export const router = createBrowserRouter([
     {
         path: "/",
         element:<Main></Main>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: "/",
@@ -43,6 +46,10 @@ export const router = createBrowserRouter([
             {
                 path: "colleges",
                 element: <Colleges></Colleges>
+            },
+            {
+                path: "admissionPortal",
+                element: <AdmissionPerCollege></AdmissionPerCollege>
             }
         ]
         
