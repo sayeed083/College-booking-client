@@ -75,6 +75,8 @@ const Login = () => {
 
                             </div>
 
+                           <p className="mt-5 ml-2 text-red-600"> <Link to="/resetPassword">Forgot Password?</Link></p>
+
 
 
 

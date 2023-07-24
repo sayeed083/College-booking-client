@@ -3,6 +3,7 @@ import Main from "../Layout/Main";
 import AdmissionForCollege from "../Pages/Admission/AdmissionForCollege/AdmissionForCollege";
 import AdmissionPerCollege from "../Pages/Admission/AdmissionPerCollege/AdmissionPerCollege";
 import Login from "../Pages/Authentication/Login/Login";
+import ResetPassword from "../Pages/Authentication/Login/ResetPassword";
 import Register from "../Pages/Authentication/Register/Register";
 import Colleges from "../Pages/Colleges/Colleges";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
@@ -67,6 +68,10 @@ export const router = createBrowserRouter([
                 path: "reviewAndRatings/:id",
                 element: <ReviewandRatings></ReviewandRatings>,
                 loader: ({params}) => fetch(`https://college-bookings-server.vercel.app/allCollege/${params.id}`)
+            },
+            {
+                path: "resetPassword",
+                element: <ResetPassword></ResetPassword>
             }
         ]
         
