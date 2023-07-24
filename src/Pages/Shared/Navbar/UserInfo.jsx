@@ -15,12 +15,10 @@ const UserInfo = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/users')
+        fetch('https://college-bookings-server.vercel.app/users')
             .then(res => res.json())
             .then(data => {
-                console.log({ data });
                 const allData = data.filter(item => item.email === getData)
-                console.log({ allData });
                 setSs(allData)
 
             })
@@ -41,7 +39,9 @@ const UserInfo = () => {
                                     <img src={dataOfUser.userImage} className="max-w-lg rounded-3xl shadow-2xl" />
                                     <div>
                                         <h1 className="text-5xl font-bold">{dataOfUser.name}</h1>
-                                        <p className="py-6">Email: {dataOfUser.email}</p>
+                                        <p className="py-4 text-2xl">Email: {dataOfUser.email}</p>
+                                        <p className="py-4 text-2xl">Address: {dataOfUser.address}</p>
+                                        <p className="py-4 text-2xl">College: {dataOfUser.collegeName}</p>
                                         <div className="flex justify-evenly items-center">
                                         <button className="btn btn-circle btn-success"><Link to={`/updateInfo/${dataOfUser._id}`}><FaEdit></FaEdit></Link></button>
                                         <button className="btn btn-circle"><Link to="/"><FaHome/></Link></button>

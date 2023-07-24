@@ -15,10 +15,9 @@ const Navbar = () => {
 
     useEffect(() => {
 
-        fetch("http://localhost:5000/users")
+        fetch("https://college-bookings-server.vercel.app/users")
             .then(res => res.json())
             .then(data => {
-                // console.log({ data });
                 const typeUser = user?.email
                 const normalUser = data?.filter(item => item.email === typeUser)
                 setGetEmail(normalUser[0]?.email)
@@ -27,7 +26,6 @@ const Navbar = () => {
 
     }, [user])
 
-    // console.log({ getEmail });
 
 
 

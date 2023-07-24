@@ -29,7 +29,7 @@ const Register = () => {
                         const savingAUser = {
                             name: data.name, email: data.email, userImage: data.photoURL
                         }
-                        fetch('http://localhost:5000/users', {
+                        fetch('https://college-bookings-server.vercel.app/users', {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'

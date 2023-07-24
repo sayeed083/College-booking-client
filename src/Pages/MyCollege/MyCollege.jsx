@@ -1,48 +1,22 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import useAllUser from "../../hooks/useAllUser";
-import { AuthContext } from "../../Providers/AuthProvider";
 import MyCollegeSingle from "./MyCollegeSingle";
 
 const MyCollege = () => {
-    const { user } = useContext(AuthContext);
     const location = useLocation()
-    // const [users] = useAllUser();
-
-    const [getEmail, setGetEmail] = useState([])
-
     const [mySelectedColleges, setMySelectedColleges] = useState([]);
 
-    // const url = 
-
     useEffect(() => {
-        fetch(`http://localhost:5000/allAdmissions?email=${location.state.getEmail}`)
+        fetch(`https://college-bookings-server.vercel.app/allAdmissions?email=${location.state.getEmail}`)
             .then(res => res.json())
             .then(data => {
-                console.log({ data })
                 setMySelectedColleges(data)
-            
-
-
             })
     }, [location.state.getEmail]);
 
-
-
-
-
-
-
-
-
-
-
-
-    console.log({location});
-
     return (
         <div>
-            <h2 className="text-center my-5 text-4xl">Role for : {mySelectedColleges.length}</h2>
+            <h2 className="text-center my-5 text-6xl font-serif">My College</h2>
 
 
             <div className="overflow-x-auto w-full">

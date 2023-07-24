@@ -1,8 +1,20 @@
-# React + Vite
+# ELITE ADMIT HUB
+### This is a M E R N Stack or Full Stack Project. 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+#### The Main Concept is, It is a type of Website Where Students can See & Admit to Their Favorite College.
 
-Currently, two official plugins are available:
+# There are some Popular College.  
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies/Packages that used in this project is:
+    
+    1) React Router DOM
+    2) React Tailwind CSS (VITE)
+    3) Daisy UI
+    4) React Hook Form
+    6) TanStack Query 
+    7) React Loader Spinner
+    8) React Icons
+    9) React Ratings
+    10) Firebase
+    11) S w i p e r JS
+    12) Sweet Alert 2

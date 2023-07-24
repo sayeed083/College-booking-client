@@ -18,10 +18,9 @@ const SocialLogin = () => {
         googleSignIn()
             .then(result => {
                 const loggedInUser = result.user;
-                // console.log(loggedInUser);
 
                 const saveTheUser = { name: loggedInUser.displayName, email: loggedInUser.email, userImage: loggedInUser.photoURL, }
-                fetch('http://localhost:5000/users', {
+                fetch('https://college-bookings-server.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -47,10 +46,9 @@ const SocialLogin = () => {
         gitHubSignIn()
             .then(result => {
                 const loggedInUser = result.user;
-                // console.log(loggedInUser);
 
                 const saveTheUser = { name: loggedInUser.displayName, email: loggedInUser.email, userImage: loggedInUser.photoURL, }
-                fetch('http://localhost:5000/users', {
+                fetch('https://college-bookings-server.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

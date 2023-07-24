@@ -34,17 +34,17 @@ export const router = createBrowserRouter([
             {
                 path: "userInfo/:email",
                 element:<PrivateRoute><UserInfo></UserInfo></PrivateRoute>, 
-                // loader: ({params}) => fetch(`http://localhost:5000/users/${params.email}`) 
+                // loader: ({params}) => fetch(`https://college-bookings-server.vercel.app/users/${params.email}`) 
             },
             {
                 path: "updateInfo/:id",
                 element: <UpdateUserInfo></UpdateUserInfo>,
-                loader: ({params}) => fetch(`http://localhost:5000/user/${params.id}`)
+                loader: ({params}) => fetch(`https://college-bookings-server.vercel.app/user/${params.id}`)
             },
             {
                 path: "collegeCardDetails/:id",
-                element: <CollegeCardsDetails></CollegeCardsDetails>,
-                loader: ({params}) => fetch(`http://localhost:5000/allCollege/${params.id}`)
+                element: <PrivateRoute><CollegeCardsDetails></CollegeCardsDetails></PrivateRoute>,
+                loader: ({params}) => fetch(`https://college-bookings-server.vercel.app/allCollege/${params.id}`)
             },
             {
                 path: "colleges",
@@ -61,12 +61,12 @@ export const router = createBrowserRouter([
             {
                 path: "admissionPortal/:id",
                 element: <AdmissionPerCollege></AdmissionPerCollege>,
-                loader: ({params}) => fetch(`http://localhost:5000/allCollege/${params.id}`)
+                loader: ({params}) => fetch(`https://college-bookings-server.vercel.app/allCollege/${params.id}`)
             },
             {
                 path: "reviewAndRatings/:id",
                 element: <ReviewandRatings></ReviewandRatings>,
-                loader: ({params}) => fetch(`http://localhost:5000/allCollege/${params.id}`)
+                loader: ({params}) => fetch(`https://college-bookings-server.vercel.app/allCollege/${params.id}`)
             }
         ]
         

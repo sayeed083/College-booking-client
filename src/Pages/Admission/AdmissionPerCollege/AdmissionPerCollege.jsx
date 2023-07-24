@@ -7,20 +7,15 @@ import { AuthContext } from "../../../Providers/AuthProvider";
 const AdmissionPerCollege = () => {
 
     const colleges = useLoaderData();
-    console.log({ colleges });
     const location = useLocation();
-    console.log({ location });
 
     const [users] = useAllUser();
 
     const {user} = useContext(AuthContext)
 
     const filteredUser = users.filter(item => item.email === location.state.getEmail)
-    console.log({ filteredUser });
 
     const {  userImage } = filteredUser[0] || [];
-   
-    // console.log({ currentUser });
 
 
     const { name, _id } = colleges || {}
@@ -39,10 +34,10 @@ const AdmissionPerCollege = () => {
         const collegeName = form.collegeName.value;
         const fullClass = { name: name, email: email, subject, collegeID: _id, phoneNumber, address, dateOfBirth, image, collegeName }
         const currentUser = { email, userImage, name, userId:location.state.getId, address, collegeName }
-        console.log({ fullClass, currentUser });
+      
 
 
-        fetch(`http://localhost:5000/allAdmissions`, {
+        fetch(`https://college-bookings-server.vercel.app/allAdmissions`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -51,7 +46,6 @@ const AdmissionPerCollege = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 if (data.result && data.updateUserData
                     ) {
                     Swal.fire({

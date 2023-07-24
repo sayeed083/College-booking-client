@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
 import useCollegeCards from "../../hooks/useCollegeCards";
+import Rating from "react-rating";
+import { FaRegStar, FaStar } from "react-icons/fa"
+
 
 
 const Colleges = () => {
@@ -28,6 +31,22 @@ const Colleges = () => {
                                 <p>- {collegeCard.researchWorks[0]}</p>
                                 <p>- {collegeCard.researchWorks[1]}</p>
                                 <p>- {collegeCard.researchWorks[2]}</p>
+
+                                <div className="flex justify-start items-center">
+                                    <p className="underline">Ratings:</p>
+                                    {collegeCard.rating ? (
+                                        <Rating
+                                            placeholderRating={collegeCard.rating}
+                                            readonly
+                                            emptySymbol={<FaRegStar></FaRegStar>}
+                                            placeholderSymbol={<FaStar className='text-warning'></FaStar>}
+                                            fullSymbol={<FaStar></FaStar>}
+                                        />
+                                    ) : (
+                                        <p>No ratings</p>
+                                    )}
+                                </div>
+
                                 <div className="card-actions justify-end">
                                     <button className="btn btn-primary"><Link to={`/collegeCardDetails/${collegeCard._id}`}>Details</Link></button>
                                 </div>

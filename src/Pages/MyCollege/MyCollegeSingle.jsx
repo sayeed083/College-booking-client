@@ -10,7 +10,6 @@ const MyCollegeSingle = ({ mySelectedCollege }) => {
     } = mySelectedCollege;
 
     const [collegeCards] = useCollegeCards();
-    console.log({ collegeCards });
 
     
     const filteredCollege = collegeCards?.filter (item => item?._id === collegeID)
@@ -27,8 +26,7 @@ const MyCollegeSingle = ({ mySelectedCollege }) => {
         const rating = form.rating.value;
         const shortRandR = { review, rating: parseInt(rating),  name, image, 
             admissionDate, events, researchHistory, admissionProcess, researchWorks, sportsCategories, sportsInformation, collegeID }
-            console.log({shortRandR});
-        fetch(`http://localhost:5000/allCollege/review/${collegeID}`, {
+        fetch(`https://college-bookings-server.vercel.app/allCollege/review/${collegeID}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -37,7 +35,6 @@ const MyCollegeSingle = ({ mySelectedCollege }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 if (data.modifiedCount) {
                     Swal.fire({
                         position: 'top-end',
@@ -77,13 +74,7 @@ const MyCollegeSingle = ({ mySelectedCollege }) => {
             <td>{address}</td>
             <td>{collegeName}</td>
             <td>{phoneNumber}</td>
-            <td>
-               
-
-
-
-
-            </td>
+           
             <td> <form onSubmit={handleSendReviewRatings}>
                 <input name="review" className="input input-bordered mr-5" type="text" />
                 <input name="rating" className="input input-bordered mr-5" type="number" />

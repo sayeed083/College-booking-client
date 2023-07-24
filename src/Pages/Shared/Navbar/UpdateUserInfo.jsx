@@ -18,7 +18,7 @@ const UpdateUserInfo = () => {
             name: name,
             email: email
         }
-        fetch(`http://localhost:5000/user/updateUserInfo/${updateUsers._id}`, {
+        fetch(`https://college-bookings-server.vercel.app/user/updateUserInfo/${updateUsers._id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -27,7 +27,6 @@ const UpdateUserInfo = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 if (data.modifiedCount) {
                     Swal.fire({
                         position: 'top-end',

@@ -4,7 +4,7 @@ const useCollegeCards = () => {
     const { data: collegeCards = [], isLoading: loading, refetch } = useQuery({
         queryKey: ['allCollege'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/allCollege');
+            const res = await fetch('https://college-bookings-server.vercel.app/allCollege');
             return res.json();
         }
     })

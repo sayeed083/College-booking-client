@@ -19,7 +19,6 @@ const AdmissionForCollege = () => {
     useEffect(() => {
         const typeUser = user?.email
         const normalUser = users?.filter(item => item.email === typeUser)
-        console.log({ normalUser });
         setGetEmail(normalUser[0]?.email)
         setGetId(normalUser[0]?._id)
 
@@ -32,6 +31,8 @@ const AdmissionForCollege = () => {
 
     return (
         <div>
+            <h2 className="text-center my-5 text-6xl font-serif">Admission</h2>
+            <p className="text-center font-serif">Choose Your Favorite College</p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-10 mx-auto justify-items-center">
                 {
                     collegeCards.map((collegeCard) => <div key={collegeCard._id}>
